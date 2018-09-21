@@ -197,7 +197,9 @@ class wp_permastructure {
 				continue;
 
 			// remove default struct rules
-			add_filter( $type->name . '_rewrite_rules', create_function( '$rules', 'return array();' ), 11 );
+			add_filter( $type->name . '_rewrite_rules', function( $rules ) {
+				return array();
+			}, 11 );
 
 			if ( ! isset( $permastructs[ $type->rewrite[ 'permastruct' ] ] ) )
 				$permastructs[ $type->rewrite[ 'permastruct' ] ] = array();
